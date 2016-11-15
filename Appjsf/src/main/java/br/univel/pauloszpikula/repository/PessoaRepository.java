@@ -9,7 +9,7 @@ import br.univel.pauloszpikula.repository.entity.UsuarioEntity;
 import br.univel.pauloszpikula.uteis.Uteis;
 
 /**
- * Possui o método para validar a existência de uma pessoa cadastrada no banco de dados.
+ * Possui o método para salvar uma pessoa e consultar pessoas cadastradas no banco de dados.
  * @author Paulo Szpikula 14/11/2016 20:30
  */
 public class PessoaRepository {
