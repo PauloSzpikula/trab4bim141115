@@ -68,4 +68,21 @@ public class ConsultarPessoaController implements Serializable {
 	public void init(){
 		this.pessoas = pessoaRepository.GetPessoas(); // Retorna as pessoas cadastradas
 	}
+
+	/***
+	 * Carregar informações de uma pessoa a ser editada.
+	 * @param pessoaModel o modelo pessoa.
+	 */
+	public void Editar(PessoaModel pessoaModel){
+		pessoaModel.setSexo(pessoaModel.getSexo().substring(0, 1)); // Primeira letra do sexo
+		this.pessoaModel = pessoaModel;
+	}
+
+	/***
+	 * Atualiza o registro que foi alterado.
+	 */
+	public void AlterarRegistro(){
+		this.pessoaRepository.AlterarRegistro(this.pessoaModel);
+		this.init(); // Recarrega os registros
+	}
 }
