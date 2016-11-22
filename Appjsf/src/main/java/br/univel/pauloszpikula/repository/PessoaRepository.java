@@ -103,4 +103,14 @@ public class PessoaRepository {
 		pessoaEntity.setSexo(pessoaModel.getSexo());
 		entityManager.merge(pessoaEntity);
 	}
+
+	/***
+	 * Exclui um registro cadastrado no banco.
+	 * @param codigo o cádigo.
+	 */
+	public void ExcluirRegistro(int codigo){
+		entityManager =  Uteis.JpaEntityManager();
+		PessoaEntity pessoaEntity = this.GetPessoa(codigo);
+		entityManager.remove(pessoaEntity);
+	}
 }

@@ -85,4 +85,14 @@ public class ConsultarPessoaController implements Serializable {
 		this.pessoaRepository.AlterarRegistro(this.pessoaModel);
 		this.init(); // Recarrega os registros
 	}
+
+	/***
+	 * Exclusão de um registro.
+	 * @param pessoaModel o modelo pessoa.
+	 */
+	public void ExcluirPessoa(PessoaModel pessoaModel){
+		this.pessoaRepository.ExcluirRegistro(pessoaModel.getCodigo()); // Exclui a pessoa do banco
+		this.pessoas.remove(pessoaModel); // Remove a pessoa da lista
+
+	}
 }
