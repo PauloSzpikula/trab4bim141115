@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Hashtable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -112,5 +113,34 @@ public class PessoaRepository {
 		entityManager =  Uteis.JpaEntityManager();
 		PessoaEntity pessoaEntity = this.GetPessoa(codigo);
 		entityManager.remove(pessoaEntity);
+	}
+
+	/***
+	 * Retorna os tipos de pessoa agrupados.
+	 * @return hashtableRegistros os registros encontrados.
+	 */
+	public Hashtable<String, Integer> GetOrigemPessoa(){
+
+		Hashtable<String, Integer> hashtableRegistros = new Hashtable<String,Integer>();
+		entityManager =  Uteis.JpaEntityManager();
+
+		Query query = entityManager.createNamedQuery("PessoaEntity.GroupByOrigemCadastro");
+
+		@SuppressWarnings("unchecked")
+		Collection<Object[]> collectionRegistros  = (Collection<Object[]>)query.getResultList();
+
+		for (Object[] objects : collectionRegistros) {
+
+			String tipoPessoa = (String)objects[0];
+			int totalDeRegistros = ((Number)objects[1]).intValue();
+
+			if (tipoPessoa.equals("X")) {
+				tipoPessoa = "XML";
+			} else {
+				tipoPessoa = "INPUT";
+			}
+			hashtableRegistros.put(tipoPessoa, totalDeRegistros);
+		}
+		return hashtableRegistros;
 	}
 }
