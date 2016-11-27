@@ -12,7 +12,7 @@ import org.primefaces.model.chart.PieChartModel;
 import br.univel.pauloszpikula.repository.PessoaRepository;
 
 /**
- * Controladdor dografico de pizza.
+ * Controlador do gráfico de pizza.
  * @author Paulo Szpikula 27/11/2016 17:16
  */
 @Named(value="graficoPizzaPessoaController")
